@@ -4,8 +4,9 @@ This is the SvelteKit frontend for the Bulk Email Sender. See the [root README](
 
 Quick start:
 
-```bash
+bash
 npm install
 cp .env.example .env
 npm run dev
-```
+
+
