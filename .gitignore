@@ -10,10 +10,6 @@ dist
 coverage
 *.lcov
 
-# logs
-logs
-_.log
-report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 
 # dotenv environment variable files
 .env
@@ -40,7 +36,10 @@ uploads/*
 # data folder
 data/*
 !data/.gitkeep
-uploads/*
+
+# logs folder
+logs/*
+!logs/.gitkeep
 # frontend (SvelteKit)
 frontend/node_modules
 frontend/.svelte-kit
