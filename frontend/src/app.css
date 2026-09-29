@@ -1,0 +1,335 @@
+:root {
+	--bg: #f6f7fb;
+	--surface: #ffffff;
+	--surface-muted: #f1f3f9;
+	--border: #e2e6f0;
+	--text: #1c2033;
+	--text-muted: #61698a;
+	--primary: #4f46e5;
+	--primary-hover: #4338ca;
+	--primary-soft: #eef0ff;
+	--success: #15803d;
+	--success-soft: #e7f6ec;
+	--danger: #b91c1c;
+	--danger-soft: #fdecec;
+	--warning: #a16207;
+	--warning-soft: #fdf5dc;
+	--info-soft: #e8f1fd;
+	--radius: 10px;
+	--shadow: 0 1px 2px rgb(16 24 40 / 6%), 0 1px 3px rgb(16 24 40 / 8%);
+	color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--bg: #0f1220;
+		--surface: #181c2f;
+		--surface-muted: #20253b;
+		--border: #2c3250;
+		--text: #e8eaf6;
+		--text-muted: #9aa2c7;
+		--primary: #818cf8;
+		--primary-hover: #a5b4fc;
+		--primary-soft: #23284a;
+		--success: #4ade80;
+		--success-soft: #12301f;
+		--danger: #f87171;
+		--danger-soft: #3a1616;
+		--warning: #facc15;
+		--warning-soft: #33290d;
+		--info-soft: #14263f;
+		color-scheme: dark;
+	}
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	background: var(--bg);
+	color: var(--text);
+	font: 15px/1.5 system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+h1,
+h2,
+h3 {
+	margin: 0;
+	line-height: 1.25;
+}
+h1 {
+	font-size: 1.5rem;
+}
+h2 {
+	font-size: 1.15rem;
+}
+h3 {
+	font-size: 1rem;
+}
+p {
+	margin: 0;
+}
+a {
+	color: var(--primary);
+}
+code {
+	font-size: 0.85em;
+	background: var(--surface-muted);
+	padding: 0.1em 0.4em;
+	border-radius: 4px;
+}
+
+:focus-visible {
+	outline: 2px solid var(--primary);
+	outline-offset: 2px;
+}
+
+/* ---------- layout helpers ---------- */
+.page {
+	max-width: 1080px;
+	margin: 0 auto;
+	padding: 1.5rem 1rem 3rem;
+	display: grid;
+	gap: 1.25rem;
+}
+.page-header {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.75rem;
+	align-items: center;
+	justify-content: space-between;
+}
+.stack {
+	display: grid;
+	gap: 1rem;
+}
+.row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.75rem;
+	align-items: center;
+}
+.grid-2 {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 1rem;
+}
+.muted {
+	color: var(--text-muted);
+}
+.small {
+	font-size: 0.85rem;
+}
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
+/* ---------- surfaces ---------- */
+.card {
+	background: var(--surface);
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow);
+	padding: 1.25rem;
+	display: grid;
+	gap: 1rem;
+}
+.card-title {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+/* ---------- form controls ---------- */
+.input {
+	width: 100%;
+	padding: 0.55rem 0.75rem;
+	font: inherit;
+	color: var(--text);
+	background: var(--surface);
+	border: 1px solid var(--border);
+	border-radius: 8px;
+}
+.input:focus-visible {
+	outline: 2px solid var(--primary);
+	outline-offset: 0;
+	border-color: var(--primary);
+}
+.input[aria-invalid='true'] {
+	border-color: var(--danger);
+}
+input[type='checkbox'] {
+	width: 1.05rem;
+	height: 1.05rem;
+	accent-color: var(--primary);
+}
+.check {
+	display: flex;
+	align-items: center;
+	gap: 0.55rem;
+	cursor: pointer;
+}
+
+/* ---------- buttons ---------- */
+.btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	padding: 0.55rem 1rem;
+	font: inherit;
+	font-weight: 600;
+	border-radius: 8px;
+	border: 1px solid transparent;
+	cursor: pointer;
+	text-decoration: none;
+	transition: background 0.15s;
+}
+.btn:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
+.btn-primary {
+	background: var(--primary);
+	color: #fff;
+}
+.btn-primary:hover:not(:disabled) {
+	background: var(--primary-hover);
+}
+.btn-secondary {
+	background: var(--surface);
+	color: var(--text);
+	border-color: var(--border);
+}
+.btn-secondary:hover:not(:disabled) {
+	background: var(--surface-muted);
+}
+.btn-danger {
+	background: var(--danger-soft);
+	color: var(--danger);
+	border-color: transparent;
+}
+.btn-danger:hover:not(:disabled) {
+	border-color: var(--danger);
+}
+.btn-sm {
+	padding: 0.3rem 0.65rem;
+	font-size: 0.85rem;
+}
+
+.spinner {
+	width: 1em;
+	height: 1em;
+	border: 2px solid currentColor;
+	border-right-color: transparent;
+	border-radius: 50%;
+	animation: spin 0.7s linear infinite;
+	display: inline-block;
+}
+@keyframes spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+@media (prefers-reduced-motion: reduce) {
+	.spinner {
+		animation-duration: 2s;
+	}
+}
+
+/* ---------- feedback ---------- */
+.badge {
+	display: inline-block;
+	padding: 0.1rem 0.55rem;
+	font-size: 0.78rem;
+	font-weight: 600;
+	border-radius: 999px;
+	background: var(--surface-muted);
+	color: var(--text-muted);
+}
+.badge-success {
+	background: var(--success-soft);
+	color: var(--success);
+}
+.badge-danger {
+	background: var(--danger-soft);
+	color: var(--danger);
+}
+.badge-warning {
+	background: var(--warning-soft);
+	color: var(--warning);
+}
+.badge-primary {
+	background: var(--primary-soft);
+	color: var(--primary);
+}
+.notice {
+	padding: 0.75rem 1rem;
+	border-radius: 8px;
+	background: var(--info-soft);
+	font-size: 0.9rem;
+}
+.notice-warning {
+	background: var(--warning-soft);
+}
+.notice-danger {
+	background: var(--danger-soft);
+	color: var(--danger);
+}
+.empty {
+	text-align: center;
+	padding: 2rem 1rem;
+	color: var(--text-muted);
+	display: grid;
+	gap: 0.75rem;
+	justify-items: center;
+}
+
+.progress {
+	height: 10px;
+	background: var(--surface-muted);
+	border-radius: 999px;
+	overflow: hidden;
+}
+.progress > div {
+	height: 100%;
+	background: var(--primary);
+	transition: width 0.4s;
+}
+
+/* ---------- tables ---------- */
+.table-wrap {
+	overflow-x: auto;
+	border: 1px solid var(--border);
+	border-radius: 8px;
+}
+table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 0.9rem;
+}
+th,
+td {
+	text-align: left;
+	padding: 0.6rem 0.8rem;
+	border-bottom: 1px solid var(--border);
+	vertical-align: top;
+}
+th {
+	background: var(--surface-muted);
+	font-weight: 600;
+	white-space: nowrap;
+}
+tr:last-child td {
+	border-bottom: 0;
+}
